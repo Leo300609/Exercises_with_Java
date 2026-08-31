@@ -69,4 +69,4 @@ Este repositório contém uma coleção de exercícios práticos desenvolvidos e
 
 1. **Clone o repositório:**
    ```bash
-   git clone [https://github.com/Leo300609/Exercises_with_Java.git](https://github.com/Leo300609/Exercises_with_Java.git)
+   git clone https://github.com/Leo300609/Exercises_with_Java.git
