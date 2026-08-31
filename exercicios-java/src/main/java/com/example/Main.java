@@ -273,3 +273,103 @@ class Nivel5 {
         scanner.close();
     }
 }
+
+
+class Nivel6_EXTRA{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Exercício 1 - Verificação de um triângulo
+
+        System.out.println("Me diga a medida do primeiro lado do triângulo: ");
+        double ladoA = scanner.nextDouble();
+        System.out.println("Me diga a medida do segundo lado do triângulo: ");
+        double ladoB = scanner.nextDouble();
+        System.out.println("Me diga a medida do terceiro lado do triângulo: ");
+        double ladoC = scanner.nextDouble();
+
+        if (ladoA + ladoB > ladoC && ladoA + ladoC > ladoB && ladoB + ladoC > ladoA) {
+            if (ladoA == ladoB && ladoB == ladoC) {
+                System.out.println("O triângulo é equilátero.");
+            } else if (ladoA == ladoB || ladoA == ladoC || ladoB == ladoC) {
+                System.out.println("O triângulo é isósceles.");
+            } else if (ladoA != ladoB && ladoA != ladoC && ladoB != ladoC){
+                System.out.println("O triângulo é escaleno");
+            }   
+        } else{
+            System.out.println("As medidas não formam um triângulo");
+        }   
+
+
+        // Exercício 2 - Calculadora com Menu
+
+        System.out.println("Me diga o primeiro número:");
+        double numeroExercicio6_1 = scanner.nextDouble();
+
+        System.out.println("Me diga a operação (+, -, *, /):");
+        char operacao = scanner.next().charAt(0);
+
+        System.out.println("Digite o segundo número");
+        double numeroExercicio6_2 = scanner.nextDouble();
+
+        switch (operacao) {
+            case '+':
+                System.out.println("A soma dos dois valores é igual a: " + (numeroExercicio6_1 + numeroExercicio6_2) + "\n");
+                break;
+            case '-':
+                System.out.println("A subtração dos dois valores é igual a : " + (numeroExercicio6_1 - numeroExercicio6_2) + "\n");
+                break;
+            case '*':
+                System.out.println("A multiplicação dos dois valores é igual a : " + (numeroExercicio6_1 * numeroExercicio6_2) + "\n");
+                break;
+            case '/':
+                if (numeroExercicio6_2 != 0) {
+                    System.out.println("Resultado: " + (numeroExercicio6_1 / numeroExercicio6_2) + "\n");
+                }else {
+                    System.out.println("ERRO: Divisão por 0 não é permitida");
+                }
+                break;
+            default:
+            System.out.println("Operador inválido");
+        }
+
+        // Exercício 3 - Cálculo de fatorial
+        System.out.println("Digite um número inteiro positivo para ver seu fatorial:");
+        int numeroFatorial = scanner.nextInt();
+        long fatorial = 1; // Usamos long porque fatoriais crescem muito rápido
+
+        if (numeroFatorial < 0) {
+            System.out.println("Não existe fatorial de número negativo.\n");
+        } else {
+            for (int i = 1; i <= numeroFatorial; i++) {
+                fatorial *= i; // O mesmo que fatorial = fatorial * i
+            }
+            System.out.println("O fatorial de " + numeroFatorial + "! é: " + fatorial + "\n");
+        }
+
+
+        // Exercício 4 - Descubra o número aleatorio
+        int numeroRandom = (int)(Math.random() * 10) + 1;
+        int palpite = 0;
+        int tentativa = 0;
+
+        while(palpite != numeroRandom){
+            System.out.println("Pensei em um número, tente acertar: ");
+            palpite = scanner.nextInt();
+            tentativa ++;
+
+            if (palpite < numeroRandom){
+                System.out.println("Número muito baixo, tente novamente." );
+                System.out.println("Tentativa: " + tentativa + "\n");
+            } else if (palpite > numeroRandom){
+                System.out.println("Número muito alto, tente novamente.");
+                System.out.println("Tentativa: " + tentativa + "\n");
+            }
+        }
+
+        System.out.println("Parabéns, você acertou o número: " + numeroRandom + " em " + tentativa + " tentativas.");
+
+
+        scanner.close();
+    }   
+}
