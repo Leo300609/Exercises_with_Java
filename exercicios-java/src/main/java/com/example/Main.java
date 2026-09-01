@@ -428,6 +428,36 @@ class Nivel7{
             System.out.println("Classificação: Insuficiente");
         }
 
+        // Exercício 5 - Pedir um número e usar switch case para mostrar qual é o dia da semana correspondente
+        System.out.println("Digite um número de 1 a 7 para saber o dia da semana correspondente: ");
+        int diaSemana = scanner.nextInt();
+
+        switch (diaSemana) {
+            case 1:
+                System.out.println("Dia da semana: Domingo");
+                break;
+            case 2:
+                System.out.println("Dia da semana: Segunda-feira");
+                break;
+            case 3:
+                System.out.println("Dia da semana: Terça-feira");
+                break;
+            case 4:
+                System.out.println("Dia da semana: Quarta-feira");
+                break;
+            case 5:
+                System.out.println("Dia da semana: Quinta-feira");
+                break;
+            case 6:
+                System.out.println("Dia da semana: Sexta-feira");
+                break;
+            case 7:
+                System.out.println("Dia da semana: Sábado");
+                break;
+            default:
+                System.out.println("Número inválido. Por favor, digite um número de 1 a 7.");
+        }
+
         scanner.close();
     }
 }
