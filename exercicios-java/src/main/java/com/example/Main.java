@@ -373,3 +373,61 @@ class Nivel6_EXTRA{
         scanner.close();
     }   
 }
+
+// Exercícios com a Nath 01/09/2026
+class Nivel7{
+    public static void main(String[] args) {
+        // Exercício 1 - Verificador de Maior de Idade
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Digite sua idade: ");
+        int idade = scanner.nextInt();
+
+        if(idade >= 18){
+            System.out.println("Parabéns, vc é maior de idade!");
+        }else{
+            System.out.println("Que pena, vc é menor de idade!");
+        }
+
+        // Exercício 2 - Verificador de Aprovado ou não
+        System.out.println("Digite sua nota: ");
+        double nota = scanner.nextDouble();
+        if(nota >= 7){
+            System.out.println("Parabéns, vc foi aprovado!");
+        }else{
+            System.out.println("Que pena, vc foi reprovado!");
+        }
+
+        // Exercício 3 - Qual é o maior número
+        System.out.println("Digite o primeiro número: ");
+        double num1 = scanner.nextDouble();
+        System.out.println("Digite o segundo número: ");
+        double num2 = scanner.nextDouble();
+        System.out.println("Digite o terceiro número: ");
+        double num3 = scanner.nextDouble();
+
+        double maior = num1;
+        if (num2 > maior) {
+            maior = num2;
+        }
+        if (num3 > maior) {
+            maior = num3;
+        }
+        System.out.println("O maior número é: " + maior);
+
+        // Exercício 4 - Classificação de Desempenho, classificando entre Excelente, Bom, Regular ou Insuficiente
+        System.out.println("Digite sua nota: ");
+        double notaDesempenho = scanner.nextDouble();
+
+        if (notaDesempenho >= 9) {
+            System.out.println("Classificação: Excelente");
+        } else if (notaDesempenho >= 7) {
+            System.out.println("Classificação: Bom");
+        } else if (notaDesempenho >= 5) {
+            System.out.println("Classificação: Regular");
+        } else {
+            System.out.println("Classificação: Insuficiente");
+        }
+
+        scanner.close();
+    }
+}
