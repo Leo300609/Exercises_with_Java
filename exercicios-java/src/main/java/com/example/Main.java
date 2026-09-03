@@ -461,3 +461,97 @@ class Nivel7{
         scanner.close();
     }
 }
+
+class Nivel8{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Exercício 1 - Contador de Pares e Ímpares
+        int contadorPares = 0;
+        int contadorImpares = 0;
+
+        System.out.println("Digite 10 números inteiros: ");
+        for (int i = 0; i < 10; i++) {
+            int numero = scanner.nextInt();
+            if (numero % 2 == 0) {
+                contadorPares++;
+            } else {
+                contadorImpares++;
+            }
+        }
+        System.out.println("Quantidade de números pares: " + contadorPares);
+        System.out.println("Quantidade de números ímpares: " + contadorImpares);
+
+
+        // Exercício 2 - Sequência de Fibonacci
+        System.out.println("Me diga um número N: ");
+        int n = scanner.nextInt();
+        int a = 0, b = 1;
+        System.out.print("Sequência de Fibonacci: " + a + " " + b + " ");
+
+        for (int i = 2; i < n; i++) {
+            int c = a + b;
+            System.out.print(c + " ");
+            a = b;
+            b = c;
+        }
+
+        // Exercício 3 - Validação de Entrada com do-while
+        System.out.println("Me diga uma senha (mínimo 6 caracteres):");
+        String senha;
+        do {
+            senha = scanner.next();
+            if (senha.length() < 6) {
+                System.out.println("Senha inválida. Tente novamente:");
+            }
+        } while (senha.length() < 6);
+
+        System.out.println("Senha válida!");
+
+        scanner.close();
+    }
+}
+
+class Nível9{
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        // Exercício 1 - Inversão de Vetor
+        int[] vetor = new int[5];
+        int[] inverso = new int[5];
+        System.out.println("Digite 5 números inteiros: ");
+        for (int i = 0; i < 5; i++) {
+            vetor[i] = scanner.nextInt();
+        }
+        for (int i = 0; i < 5; i++) {
+            inverso[i] = vetor[4 - i];
+        }
+        System.out.print("Vetor invertido: ");
+        for (int i = 0; i < 5; i++) {
+            System.out.print(inverso[i] + " ");
+        }
+
+        // Exercício 2 - Menor e Maior Elemento do Vetor
+        int[] vetor2 = new int[5];
+        System.out.println("\nDigite 5 números inteiros: ");
+        for (int i = 0; i < 5; i++) {
+            vetor2[i] = scanner.nextInt();
+        }
+
+        int menor = vetor2[0];
+        int maior = vetor2[0];
+        for (int i = 1; i < 5; i++) {
+            if (vetor2[i] < menor) {
+                menor = vetor2[i];
+            }
+            if (vetor2[i] > maior) {
+                maior = vetor2[i];
+            }
+        }
+        System.out.println("Menor elemento: " + menor);
+        System.out.println("Maior elemento: " + maior);
+
+
+        scanner.close();
+    }
+}
