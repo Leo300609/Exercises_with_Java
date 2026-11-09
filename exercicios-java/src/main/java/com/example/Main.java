@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.time.LocalDate;
 import java.util.Scanner;
 
 public class Main {
@@ -608,6 +609,98 @@ class Nivel10{
 
             // Mensagem de conclusão
             System.out.println("Relatorio gerado com sucesso!");
+
+        } catch (IOException e) {
+            System.out.println("Erro: " + e.getMessage());
+        }
+    }
+}
+
+// Dia 30 - Desafios finais de Escrita de Arquivos em JAVA
+class Nivel11{
+    public static void main(String[] args) {
+        try {
+            BufferedReader leitor = new BufferedReader(new FileReader("hosts.csv"));
+            BufferedWriter escritor = new BufferedWriter(new FileWriter("inventario_atualizado.csv"));
+            BufferedWriter escritorCriticos = new BufferedWriter(new FileWriter("hosts_criticos.csv"));
+
+            int contadorWindows = 0;
+            int contadorLinux = 0;
+            int contadorMac = 0;
+
+            // Desafio 4 - Data da auditoria
+            String dataAuditoria = LocalDate.now().toString();
+
+            String linha = leitor.readLine();
+
+            // Desafio 1, 4 e 5 - Novas colunas: status, data_auditoria e risco
+            String cabecalho = linha + ",criticidade,status,data_auditoria,risco";
+            escritor.write(cabecalho);
+            escritor.newLine();
+
+            // Desafio 3 - Cabeçalho do arquivo de hosts críticos
+            escritorCriticos.write(cabecalho);
+            escritorCriticos.newLine();
+
+            while ((linha = leitor.readLine()) != null) {
+                String[] dados = linha.split(",");
+                String host = dados[0];
+                String ip = dados[1];
+                String so = dados[2];
+
+                String criticidade;
+                if (so.contains("Kali")) {
+                    criticidade = "Alta";
+                } else if (so.contains("Ubuntu") || so.contains("Debian") || so.contains("Rocky")) {
+                    criticidade = "Baixa";
+                } else {
+                    criticidade = "Media";
+                }
+
+                // Desafio 1 e 2 - Status e contagem de sistemas operacionais
+                String status;
+                if (so.contains("Windows")) {
+                    status = "Online";
+                    contadorWindows++;
+                } else if (so.contains("Kali") || so.contains("Ubuntu") || so.contains("Debian") || so.contains("Rocky") || so.contains("Linux")) {
+                    status = "Em Monitoramento";
+                    contadorLinux++;
+                } else {
+                    status = "Online";
+                    if (so.contains("macOS")) {
+                        contadorMac++;
+                    }
+                }
+
+                // Desafio 5 - Risco de 1 a 10 conforme a criticidade
+                int risco;
+                if (criticidade.equals("Alta")) {
+                    risco = 10;
+                } else if (criticidade.equals("Media")) {
+                    risco = 5;
+                } else {
+                    risco = 2;
+                }
+
+                String registro = host + "," + ip + "," + so + "," + criticidade + "," + status + "," + dataAuditoria + "," + risco;
+                escritor.write(registro);
+                escritor.newLine();
+
+                // Desafio 3 - Apenas hosts de criticidade Alta
+                if (criticidade.equals("Alta")) {
+                    escritorCriticos.write(registro);
+                    escritorCriticos.newLine();
+                }
+            }
+
+            leitor.close();
+            escritor.close();
+            escritorCriticos.close();
+
+            System.out.println("Relatorio gerado com sucesso!");
+            System.out.println("Hosts Windows: " + contadorWindows);
+            System.out.println("Hosts Linux: " + contadorLinux);
+            System.out.println("Hosts macOS: " + contadorMac);
 
         } catch (IOException e) {
             System.out.println("Erro: " + e.getMessage());
